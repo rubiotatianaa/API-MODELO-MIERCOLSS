@@ -2,6 +2,7 @@ package com.example.API.MODELO.MIERCOLSS.modelos;
 
 import com.example.API.MODELO.MIERCOLSS.ayudas.EstadosUsuario;
 import com.example.API.MODELO.MIERCOLSS.ayudas.RolesUsuario;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -29,6 +30,8 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private RolesUsuario rol;
 
+    @OneToOne(mappedBy = "usuario")
+    @JsonBackReference(value = "relaciónusuarioyestudiante")
     private Estudiante estudiante;
 
     //Después de los atributos y antes del constructor defino las relaciones
@@ -36,6 +39,8 @@ public class Usuario {
     //1. Para repr4esentar en Java una relacion de 1 con otra tabla creo una variable
     //de esa tabla con la que voy a relacionar
     //2. Identifico el lado principal o manejador de la relación (la tabla que tiene la fk)
+    //1. Configuro la relación en el lado no dominante
+
 
     public Usuario() {
     }

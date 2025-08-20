@@ -1,5 +1,6 @@
 package com.example.API.MODELO.MIERCOLSS.modelos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -19,7 +20,8 @@ public class Estudiante {
 
     @OneToOne
     //3. La tabla que tiene la FK configuro la relacion con la otra tabla
-    @JoinColumn(name = "fk_usuario")
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "id")
+    @JsonManagedReference(value = "relaciónusuarioyestudiante")
     private Usuario usuario;
 
 
