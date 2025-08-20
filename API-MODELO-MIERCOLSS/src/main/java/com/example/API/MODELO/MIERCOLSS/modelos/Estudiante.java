@@ -17,6 +17,12 @@ public class Estudiante {
     @Column(name = "fechanacimiento", nullable = false, unique = false)
     private LocalDate fechaNacimiento;
 
+    @OneToOne
+    //3. La tabla que tiene la FK configuro la relacion con la otra tabla
+    @JoinColumn(name = "fk_usuario")
+    private Usuario usuario;
+
+
     public Estudiante() {
     }
 

@@ -29,6 +29,14 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private RolesUsuario rol;
 
+    private Estudiante estudiante;
+
+    //Después de los atributos y antes del constructor defino las relaciones
+    //Definiendo una relación UNO A UNO. una relación es bidereccional
+    //1. Para repr4esentar en Java una relacion de 1 con otra tabla creo una variable
+    //de esa tabla con la que voy a relacionar
+    //2. Identifico el lado principal o manejador de la relación (la tabla que tiene la fk)
+
     public Usuario() {
     }
 
