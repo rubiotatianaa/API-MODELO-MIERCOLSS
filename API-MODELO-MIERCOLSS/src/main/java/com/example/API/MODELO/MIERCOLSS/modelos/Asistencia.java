@@ -1,6 +1,8 @@
 package com.example.API.MODELO.MIERCOLSS.modelos;
 
 import com.example.API.MODELO.MIERCOLSS.ayudas.Estado;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.sun.jdi.Value;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -22,6 +24,15 @@ public class Asistencia {
     @Column(name = "observacion", nullable = true, unique = false)
     private String observacion;
 
+
+    //CREANDO LA RELACIÓN DE MUCHOS A UNO
+    //2. Como me relaciono con 1 solo elemento de la otra tabla creo una variable individual
+
+    @ManyToOne
+    //3. Construyo la relacion entre las tablas(defino la FK)
+    @JoinColumn(name = "fk_estudiante", referencedColumnName = "id")
+    @JsonManagedReference(value = "relacionentreestudianteyasistencia")
+    private Estudiante estudiante;
     public Asistencia() {
     }
 

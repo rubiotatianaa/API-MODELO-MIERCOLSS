@@ -1,9 +1,11 @@
 package com.example.API.MODELO.MIERCOLSS.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "estudiantes")
@@ -23,6 +25,13 @@ public class Estudiante {
     @JoinColumn(name = "fk_usuario", referencedColumnName = "id")
     @JsonManagedReference(value = "relaciónusuarioyestudiante")
     private Usuario usuario;
+    //CREANDO RELACIÓN DE 1 A MUCHOS
+    //1. Para representar MUCHOS elemtos de otra tabla debo crear un arreglo(Lista)
+
+    @OneToMany(mappedBy = "estudiante")
+    @JsonBackReference(value = "relacionentreestudianteyasistencia")
+    private ArrayList<Asistencia>asistencia;
+
 
 
     public Estudiante() {
